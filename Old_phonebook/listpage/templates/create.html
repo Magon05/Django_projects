@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>Создание контакта</title>
+    <link rel="stylesheet" href="{% static '/css/style.css'%}">
+</head>
+<body>
+
+    <p id="p001">
+        <h1 id="h001">Создать контакт</h1>
+    </p>
+
+    <form id="fr001" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Сохранить"> | <a href="/">Отмена</a>
+    </form>
+
+    <p id="p002"></p>
+
+
+</body>
+</html>

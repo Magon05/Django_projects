@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% extends 'background.html' %}
+{% load static %}
+<html>
+<!--<head>
+    <title>Создание контакта</title>
+    <link rel="stylesheet" href="{% static '/css/style.css'%}">
+</head>-->
+{% block body %}
+<body>
+
+    <p id="p001">
+        <h1 id="h001">Создать аккаунт</h1>
+    </p>
+
+    <form id="fr001" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Сохранить" class="btn btn-primary"> | <a href="/" class="btn btn-danger">Отмена</a>
+    </form>
+{% endblock body %}
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+
+{% load static %}
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Главная</title>
+    <link rel="stylesheet" href="{% static '/css/style.css'%}">
+</head>
+<body>
+
+    <p id="p01">
+        <h1 id="h01">Телефонный справочник</h1>
+    </p>
+    <div id="div01">
+        {% block content %}
+        {% if user.is_authenticated %}
+        <p> Салам {{ user.username }}! </p>
+        <form method="POST" action="logout/">
+            {% csrf_token %}
+            <input type="submit" value="Выйти из профиля" >
+        </form>
+        {% else %}
+        <p>Вы не авторизованы</p>
+        <form method="post" action="login/">
+            {% csrf_token %}
+            <input type="submit" value="Войти" >
+        </form>
+        {% endif %}
+        {% endblock %}
+    </div>
+
+    <div id="div02">
+        <form method="POST" >
+            {% csrf_token %}
+            <p>
+                <label>Имя или номер</label><br>
+                <input type="text" name="filter" />
+                <input type="submit" value="Поиск" >
+            </p>
+        </form>
+
+        {% if persons.count > 0 %}
+        <h2>Список пользователей</h2>
+        <table>
+            <thead><th>Id</th><th>ФИО</th><th>Номер</th><th>Тип телефона</th><th>Комментарий</th><th>Операции</th></thead>
+            {% for person in persons %}
+            <tr>
+                <td>{{ person.id }}</td>
+                <td>{{ person.full_name }}</td>
+                <td>{{ person.phone_number }}</td>
+                <td>{{ person.phone_type }}</td>
+                <td>{{ person.comment }}</td>
+                {% if user.is_authenticated %}
+                <td><a href="edit/{{person.id}}">Изменить</a> | <a href="delete/{{person.id}}">Удалить</a></td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+    </div>
+
+    <div id="div03">
+        {% if user.is_authenticated %}
+        <form method="Get" action="create/">
+            <input type="submit" value="Добавить адрес" >
+        </form>
+        {% endif %}
+    </div>
+
+    <p id="p02"></p>
+
+</body>
+</html>

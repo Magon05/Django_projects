@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static '/css/style.css'%}">
+    <title>Вход</title>
+</head>
+<body>
+    <p id="p0001">
+        <h1 id="h0001">Авторизация</h1>
+    </p>
+
+    <form id="fr0001" method="post" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Войти" > | <a href="/">Отмена</a>
+    </form>
+</body>
+</html>

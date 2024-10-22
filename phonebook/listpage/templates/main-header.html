@@ -1,0 +1,59 @@
+{% load static%}
+
+						<!--app header-->
+						<div class="app-header header top-header">
+							<div class="container-fluid">
+								<div class="d-flex">
+									<a class="header-brand" href="index">
+										<img src="{% static 'assets/images/brand/logo.png'%}" class="header-brand-img desktop-lgo" alt="Dashtic logo">
+										<img src="{% static 'assets/images/brand/logo1.png'%}" class="header-brand-img dark-logo" alt="Dashtic logo">
+										<img src="{% static 'assets/images/brand/favicon.png'%}" class="header-brand-img mobile-logo" alt="Dashtic logo">
+										<img src="{% static 'assets/images/brand/favicon1.png'%}" class="header-brand-img darkmobile-logo" alt="Dashtic logo">
+									</a>
+
+									<div class="d-flex order-lg-2 ms-auto">
+
+										<div class="dropdown   header-fullscreen ps-4" >
+											<a  class="nav-link icon full-screen-link p-0"  id="fullscreen-button">
+												<svg class="header-icon" x="1008" y="1248" viewBox="0 0 24 24"  height="100%" width="100%" preserveAspectRatio="xMidYMid meet" focusable="false"><path d="M7,14 L5,14 L5,19 L10,19 L10,17 L7,17 L7,14 Z M5,10 L7,10 L7,7 L10,7 L10,5 L5,5 L5,10 Z M17,17 L14,17 L14,19 L19,19 L19,14 L17,14 L17,17 Z M14,5 L14,7 L17,7 L17,10 L19,10 L19,5 L14,5 Z"></path></svg>
+											</a>
+										</div>
+
+										<div class="dropdown profile-dropdown">
+											<a href="{% url 'login' %}" class="nav-link pe-0 leading-none" data-bs-toggle="dropdown">
+												<span>
+													{% if user.is_authenticated %}
+														<img src="{% static 'assets/images/users/unlock.jpg'%}" alt="img" class="avatar avatar-md brround">
+													{% else %}
+														<img src="{% static 'assets/images/users/lock.jpg'%}" alt="img" class="avatar avatar-md brround">
+													{% endif %}
+												</span>
+											</a>
+
+											<div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow animated">
+												<div class="text-center">
+													{% if user.is_authenticated %}
+														<h5 class=" mb-1 font-weight-bold">{{ user.username }}</h5>
+														<div class="dropdown-divider"></div>
+													{% else %}
+														<span class="text-center user-semi-title">Гость</span>
+														<div class="dropdown-divider"></div>
+													{% endif %}
+												</div>
+
+												{% if user.is_authenticated %}
+													<div style="text-align: center">
+														<a href="logout/" class="btn btn-outline-danger">Выйти</a>
+													</div>
+												{% else %}
+													<div style="text-align: center">
+														<a href="login/" class="btn btn-outline-success">Войти</a>
+													</div>
+												{% endif %}
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--/app header-->

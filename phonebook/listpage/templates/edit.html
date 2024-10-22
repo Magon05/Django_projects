@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+{% load widget_tweaks %}
+{% with WIDGET_ERROR_CLASS='is-invalid' %}
+
+<form hx-post="{{ request.path }}" hx-headers='{"X-CSRFToken":"{{ csrf_token }}"}' class="modal-content">
+  <p>{{request.path}}</p>
+  <div class="modal-header">
+    <h5 class="modal-title">Создать контакт</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  </div>
+  <div class="modal-body">
+    <div class="mb-3">
+      <label>ФИО:</label>
+      {{ form.full_name }}
+     <!-- <input type="text" name="full_name" value="{{persons.full_name}}" /> -->
+      <label>Номер:</label>
+      {{ form.phone_number }}
+      <!--<input type="text" name="phone_number" value="{{persons.phone_number}}" />-->
+    </div>
+    <div class="mb-3">
+      <label>Тип телефона:</label>
+      {{ form.phone_type }}
+      <!--<select name="phone_type">
+        <option value="1">PhoneType object (1)</option>
+        <option value="2">PhoneType object (2)</option>
+      </select>-->
+    </div>
+    <div class="mb-3">
+      <label>Комментарий:</label>
+     <!-- <input type="text" name="comment" value="{{persons.comment}}" /> -->
+      {{ form.comment }}
+    </div>
+
+
+  </div>
+  <div class="modal-footer">
+    {% if movie %}
+    <button type="button" class="btn btn-danger" hx-post="{% url 'remove_movie' pk=movie.pk %}">Remove</button>
+    <span class="flex-grow-1"></span>
+    {% endif %}
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" >Сохранить</button> <!--onclick="await elementUpdate('.table-responsive');"-->
+  </div>
+</form>
+{% endwith %}

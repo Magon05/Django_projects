@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Редактирование</title>
+</head>
+<body>
+    <a href="/">Главная</a>
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>ФИО</label><br>
+            <input type="text" name="full_name" value="{{person.full_name}}" />
+        </p>
+        <p>
+            <label>Номер телефона</label><br>
+            <input type="text" name="phone_number" value="{{person.phone_number}}" />
+        </p>
+        <p>
+            <label>Комментарий</label><br>
+            <input type="text" name="comment" value="{{person.comment}}" />
+        </p>
+            <label>Введите тип телефона</label><br>
+            <select name="phone_type">
+            <option value="1">PhoneType object (1)</option>
+            <option value="2">PhoneType object (2)</option>
+            </select>
+        </p>
+        <input type="submit" value="Сохранить" >
+    </form>
+</body>
+</html>

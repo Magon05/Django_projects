@@ -1,0 +1,7 @@
+.sidebar {
+  width: 15%; /* set the width of the sidebar */
+  background-color : #ccc; /* set the background color */
+  height: 50%; /* make the sidebar fill the height of the container */
+  position: fixed; /* fix the position of the sidebar */
+  left: 100; /* position the sidebar to the left */
+}

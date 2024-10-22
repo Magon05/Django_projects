@@ -1,0 +1,78 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+
+
+<body hx-trigger="load, movieListChanged from:body" hx-get="{{ request.path }}" hx-target="this">
+
+    <div class="main">
+        <H1>Вы здесь {{ request.path }}</H1>
+        <form action="{% url 'search' %}" method="get">
+            <input name="full_name" placeholder="ФИО">
+            <button type="submit">Поиск</button>
+            <div id = "full_search" style="display: none">
+                <input name="phone_number" placeholder="Номер">
+                <input name="dolshnost" placeholder="Должность">
+                <input name="otdelenie" placeholder="Отделение">
+            </div>
+        </form>
+
+        <button onclick=extend_search()>Расширреный поиск</button>
+        <button hx-get="{% url 'create' %}" hx-target="body" hx-swap="beforeend">Добавить контакт</button>
+
+        <form action="." method="get">
+            <select name="paginate_by">
+                <option>4</option>
+                <option>8</option>
+                <option>12</option>
+                <option>16</option>
+            </select>
+            <button type="submit">Вывести</button>
+        </form>
+
+        <table id="sotrundinki">
+            <thead><th>Id</th><th>ФИО</th><th>Должность</th><th>Отделение</th><th>Телефон</th><th>Почта</th><th>Операции</th></thead>
+            {% for i in data %}
+            <tbody>
+                <tr id="sotrudnik" hx-swap="outerHTML">
+                    <td>{{ i.id }}</td>
+                    <td>{{ i.FIO }}</td>
+                    <td>{{ i.Dolshnost }}</td>
+                    <td>{{ i.Otdelenie }}</td>
+                    <td>{{ i.Telephon }}</td>
+                    <td>{{ i.Pochta }}</td>
+                    <td> <button hx-get="delete/{{i.id}}" hx-target="body" hx-swap="beforeend">Удалить</button> | <button hx-get="edit/{{i.id}}" hx-target="body" hx-swap="beforeend">Изменить</button></td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+
+        <!-- Пагинация -->
+        <div class="pagination">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1">&laquo; Первую</a>
+                    <a href="?page={{ page_obj.previous_page_number }}">Назад</a>
+                {% endif %}
+
+                <span class="current">
+                    Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}.
+                </span>
+
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">Вперед</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">Последняя &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+
+</body>
+
+
+{% endblock %}
+
+

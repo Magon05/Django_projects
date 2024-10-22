@@ -1,0 +1,12 @@
+
+	<div class="modal-content">
+		<form method="POST" action="{{ request.path }}">
+			{% csrf_token %}
+  			<h1 style="text-align: center;">Удаление</h1>
+    		<p style="text-align: center;">Вы действительно хотите удалить?</p>
+			<br>
+			<br>
+			<button type="button" >Нет</button>
+  			<button type="submit" >Да</button>
+		</form>
+	</div>

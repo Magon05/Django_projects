@@ -1,0 +1,49 @@
+                <!--
+                {% for person in persons %}
+                  <tr>
+                    <td>{{ person.id }}</td>
+                    <td class="font-weight-bold">{{ person.full_name }}</td>
+                    <td>{{ person.phone_number }}</td>
+                    <td>{{ person.phone_type }}</td>
+                    <td class="font-weight-bold">{{ person.comment }}</td>
+                    {% if user.is_authenticated %}
+                        <td class="align-middle">
+                            <div style="text-align: center">
+                                <button hx-get="edit/{{person.id}}" hx-target="#dialog" class="btn btn-sm btn-white btn-svg" type="button" data-bs-toggle="modal" data-bs-target="#user-form-modal">Edit</button>
+                                <button hx-get="delete/{{person.id}}" hx-target="#dialog" class="btn btn-sm btn-white btn-svg" type="button"><svg class="svg-icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M8 9h8v10H8z" opacity=".3"></path><path d="M15.5 4l-1-1h-5l-1 1H5v2h14V4zM6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9z"></path></svg></button>
+                            </div>
+                        </td>
+                    {% endif %}
+                  </tr>
+                {% endfor %}
+                -->
+
+{% load render_table from django_tables2 %}
+
+<html>
+    <body>
+        {% if filter %}
+        <form action="" method="get" class="form form-inline">
+           ФИО {{ filter.form.full_name }} \\ <button type="submit" class="btn btn-primary"><i class="ti-search" data-bs-toggle="tooltip" title="" data-bs-original-title="ti-search" aria-label="ti-search"></i></button>
+            <div id = "full_search" style="display: none">
+               Номер {{ filter.form.phone_number }}
+                Комментарий {{ filter.form.comment }}
+               Тип телефона {{ filter.form.phone_type }}
+            </div>
+        </form>
+        <button onclick="extend_search()" class="btn btn-white dropdown-toggle">Расширреный поиск</button>
+        {% endif %}
+        {% render_table table %}
+            <div id="modal" class="modal fade">
+                <div id="dialog" class="modal-dialog" hx-target="this"></div>
+            </div>
+    </body>
+</html>
+<script>
+    function extend_search() {
+    if (document.getElementById("full_search").style.display == "none")
+    {document.getElementById("full_search").style.display = "block"}
+    else {document.getElementById("full_search").style.display = "none"} }
+</script>
+
+

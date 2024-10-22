@@ -1,0 +1,101 @@
+
+{% load static%}
+
+<head>
+    <link href="{% static 'assets/css/style.css'%}" rel="stylesheet" type="text/css" />
+</head>
+
+<!--
+      <tr>
+        <td>
+            {{ otdelenia.id }}
+        </td>
+        <td>
+            {{ form.FIO }}
+        </td>
+        <td>
+            {{ form.Dolshnost }}
+        </td>
+        <td>
+            {{ form.Otdelenie }}
+        </td>
+        <td>
+            {{ form.Telephon }}
+        </td>
+        <td>
+            {{ form.Pochta }}
+        </td>
+
+        <td><button class="btn btn-danger" hx-post="{{ request.path }}" hx-include="closest tr">Сохранить</button></td>
+      </tr>
+-->
+
+
+<!-- <label>Введите тип телефона</label><br>
+            <select name="phone_type">
+            <option value="Домашний">Домашний</option>
+            <option value="Мобильный">Мобильный</option>
+            </select> -->
+
+
+<!--
+<form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>ФИО</label><br>
+            <input type="text" name="full_name" value="{{otdelenia.FIO}}" />
+        </p>
+        <p>
+            <label>Должность</label><br>
+            <input type="text" name="phone_number" value="{{otdelenia.Dolshnost}}" />
+        </p>
+        <p>
+            <label>Отделение</label><br>
+            <input type="text" name="comment" value="{{otdelenia.Otdelenie}}" />
+        </p>
+        <p>
+            <label>Телефон</label><br>
+            <input type="text" name="comment" value="{{otdelenia.Telephon}}" />
+        </p>
+        <p>
+            <label>Почта</label><br>
+            <input type="text" name="comment" value="{{otdelenia.Pochta}}" />
+        </p>
+
+        <input type="submit" value="Сохранить" >
+    </form>
+-->
+
+<!--
+<form hx-post="{{ request.path }}" hx-headers='{"X-CSRFToken":"{{ csrf_token }}"}'>
+  <h1>{{ request.path }}</h1>
+  <h5 class="modal-title">Создать контакт</h5>
+  {{ form.as_p }}
+  {{ form.FIO }}
+  {{ form.Dolshnost }}
+  {{ form.Otdelenie }}
+  {{ form.Telephon }}
+  {{ form.Pochta }}
+  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+  <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" >Сохранить</button>
+</form>
+-->
+
+
+
+<div id="modal" _="on closeModal add .closing then wait for animationend then remove me">
+	<div class="modal-underlay" _="on click trigger closeModal"></div>
+	<div class="modal-content">
+		<form hx-post="{{ request.path }}" hx-headers='{"X-CSRFToken":"{{ csrf_token }}"}' style="text-align: center">
+  			<H1>Вы здесь {{ request.path }}</H1>
+			<h2>Создать/Редактировать контакт</h2>
+  			{{ form.as_p }}
+			<br>
+			<br>
+  			<button type="button" _="on click trigger closeModal" style="text-align: left">Отмена</button>
+  			<button type="submit" _="on click trigger closeModal" style="text-align: right">Сохранить</button>
+		</form>
+	</div>
+</div>
+
+

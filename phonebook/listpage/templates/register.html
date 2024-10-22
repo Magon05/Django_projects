@@ -1,0 +1,53 @@
+{% extends 'components/custom-base.html' %}
+{% load static%}
+
+		{% block customstyles %}
+		{% endblock customstyles %}
+
+			{% block body %}
+			<div class="page-style1 light-mode default-sidebar error-page">
+				<div class="page">
+					<div class="page-single">
+						<div class="p-5">
+							<div class="row">
+								<div class="col mx-auto">
+									<div class="row justify-content-center">
+										<div class="col-lg-9 col-xl-8">
+											<div class="card-group mb-0">
+												<div class="card p-4 page-content">
+													<div class="card-body page-single-content">
+														<div class="w-100">
+														<h1 class="mb-2">Регистрация</h1>
+														<p class="text-muted">Создание нового аккаунта</p>
+														<form method="post">{% csrf_token %}
+															{{ form.as_p }}
+															<div class="row">
+																<div class="col-12">
+																	<button type="submit" class="btn  btn-lg btn-primary btn-block px-4"><i class="fe fe-arrow-right"></i> Создать аккаунт</button>
+																</div>
+															</div>
+														</form>
+													</div>
+													</div>
+												</div>
+												<div class="card text-white bg-primary py-5 d-md-down-none page-content mt-0">
+													<div class="card-body text-center justify-content-center page-single-content">
+														<img src="{% static ''%}assets/images/pattern/login.png" alt="img">
+													</div>
+												</div>
+											</div>
+											<div class="text-center pt-4">
+												<div class="font-weight-normal fs-16">У вас уже есть аккаунт? <a class="btn-link font-weight-normal" href="{% url 'login' %}">Авторизуйтесь здесь</a></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% endblock body %}
+					
+		{% block customscripts %}
+		{% endblock customscripts %}

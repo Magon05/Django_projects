@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Создать новый адрес</title>
+</head>
+<body>
+<form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Введите имя</label><br>
+            <input type="text" name="full_name" />
+        </p>
+        <p>
+            <label>Введите номер</label><br>
+            <input type="text" name="phone_number" />
+        </p>
+        <p>
+            <label>Введите комментарий</label><br>
+            <input type="text" name="comment" />
+        </p>
+        <p>
+            <label>Введите тип телефона</label><br>
+            <select name="phone_type">
+            <option value="Мобильный">Мобильный</option>
+            <option value="Домашний">Домашний</option>
+            </select>
+        </p>
+        <input type="submit" value="Сохранить" >
+    </form>
+</body>
+</html>

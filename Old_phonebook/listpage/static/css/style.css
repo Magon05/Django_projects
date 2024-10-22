@@ -1,0 +1,93 @@
+/* index.html */
+#p01 {
+    background-color: #3b82f6;
+    height: 100px;
+}
+
+#h01 {
+    text-align: center;
+    margin-top: -7%;
+    color: white;
+}
+
+#div01 {
+    position: absolute;
+    top: 150px;
+    right: 100px;
+    text-align: center;
+    border: 5px solid #3b82f6;
+    font-size: 20px;
+}
+
+#div02 {
+    position: absolute;
+    top: 100px;
+    left: 20px;
+
+}
+
+table {
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+th,td {
+    border: 1px solid black;
+}
+
+#div03 {
+    position: absolute;
+    top: 350px;
+    left: 20px;
+}
+
+#p02 {
+    background-color: #3b82f6;
+    height: 100px;
+    margin-top: 50%;
+}
+
+/* create.html */
+#p001 {
+    background-color: #3b82f6;
+    height: 100px;
+}
+
+#h001 {
+    text-align: center;
+    margin-top: -7%;
+    color: white;
+}
+
+#fr001 {
+    margin-top: 10%;
+}
+
+#a001 {
+    margin-right: 30%;
+}
+
+#p002 {
+    background-color: #3b82f6;
+    height: 100px;
+    margin-top: 50%;
+}
+
+/* login.html */
+#fr0001 {
+    margin-top: 15%;
+    margin-left: 40%;
+    border: 5px #3b82f6;
+}
+
+#p0001 {
+    background-color: #3b82f6;
+    height: 100px;
+}
+
+#h0001 {
+    text-align: center;
+    margin-top: -7%;
+    color: white;
+}
+
